@@ -20,7 +20,7 @@ export function fetchCases() {
    return function(dispatch) {
       dispatch(requestCases()) //Request
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', location.protocol + '//www.hyzer.no/met.php?lat='+window.position.coords.latitude+';lon='+window.position.coords.longitude+';msl=70');
+      xhr.open('GET', location.protocol + '//www.tv2.no/fragments/met.php?lat='+window.position.coords.latitude+';lon='+window.position.coords.longitude+';msl=70');
       xhr.onreadystatechange = function() {
          if (xhr.readyState === 4 && xhr.status === 200) {
             dispatch(receiveCases(xhr.responseXML));
