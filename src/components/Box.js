@@ -14,7 +14,7 @@ class Box extends React.Component {
       this.props.data.title = "...";
     }
     let imgCode = (this.props.data.symbol < 10 ? '0' : '')+this.props.data.symbol;
-    if (this.props.data.symbol == "44"){
+    if (this.props.data.symbol == "44" || this.props.data.symbol == "7"){
         imgCode += 'd';
     } else if (this.props.data.symbol == "3") {
         if (this.props.data.from.getHours() > 18 || this.props.data.from.getHours() < 10){
