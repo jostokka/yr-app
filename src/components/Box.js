@@ -13,13 +13,14 @@ class Box extends React.Component {
     if(this.props.data.title == "") {
       this.props.data.title = "...";
     }
-    let imgCode = '0'+this.props.data.symbol;
-    if (this.props.data.symbol == "4"){
+    let imgCode = (this.props.data.symbol < 10 ? '0' : '')+this.props.data.symbol;
+    if (this.props.data.symbol == "44"){
+        imgCode += 'd';
     } else if (this.props.data.symbol == "3") {
         if (this.props.data.from.getHours() > 18 || this.props.data.from.getHours() < 10){
             imgCode = 'mf/'+imgCode+'n.17';
         } else {
-            imgCode += 'n.11';
+            imgCode += 'd';
         }
 
     } else if (this.props.data.symbol == 2) {
@@ -29,7 +30,7 @@ class Box extends React.Component {
             imgCode += 'd';
         }
 
-    }else if (this.props.data.symbol == "1") {
+    } else if (this.props.data.symbol == "1") {
         if (this.props.data.from.getHours() > 18 || this.props.data.from.getHours() < 10){
             imgCode = 'mf/'+imgCode+'n.17';
         } else {
@@ -42,7 +43,7 @@ class Box extends React.Component {
         <tr>
          <td>{days[this.props.data.from.getDay()]} - {(this.props.data.from.getHours() < 10 ? '0':'')+this.props.data.from.getHours()}:00</td>
          <td><img src={"https://symbol.yr.no/grafikk/sym/b38/"+imgCode+".png"}/></td>
-         <td>{this.props.data.temperature}°</td>
+         <td className={this.props.data.temperature < 0 ? 'cold-temperature':''}>{this.props.data.temperature}°</td>
          <td>0 - {this.props.data.precipitation} mm</td>
         </tr>
     );

@@ -10,12 +10,20 @@ import routes from "./routes/routes";
 import "!style!css!sass!./styles/style.scss";
 
 if (navigator.geolocation) {
-   navigator.geolocation.watchPosition(startApp);
+   navigator.geolocation.watchPosition(startApp, errorApp);
 } else {
-   x.innerHTML = "Geolocation is not supported by this browser.";
+   errorApp();
 }
-window.position = null;
+window.position = {
+    coords :{
+        latitude:59.922699,
+        longitude:10.750092
+    }
+};
 function startApp(pos) {
-    window.position = pos;
+    window.position = pos;//59.922699, 10.750092
+    ReactDOM.render(React.createElement(YrComponent), document.getElementById('app_container'));
+}
+function errorApp() {
     ReactDOM.render(React.createElement(YrComponent), document.getElementById('app_container'));
 }
