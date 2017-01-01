@@ -14,6 +14,7 @@ if (navigator.geolocation) {
 } else {
    errorApp();
 }
+// default Oslo
 window.position = {
     coords :{
         latitude:59.922699,
@@ -21,7 +22,7 @@ window.position = {
     }
 };
 function startApp(pos) {
-    window.position = pos;//59.922699, 10.750092
+    window.position = pos;
     ReactDOM.render(React.createElement(YrComponent), document.getElementById('app_container'));
 }
 function errorApp() {
